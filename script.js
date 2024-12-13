@@ -18,13 +18,15 @@ const changeBgBrightness = (value) => {
   document.getElementById("background").style.backgroundColor = `rgb(${r} ${g} ${b})`;
 }
 
+const toggleBgColor = () => {
+  currentColor = currentColor === COLORS.Red ? COLORS.WarmWhite : COLORS.Red;
+  changeBgBrightness(document.getElementById("bright").value);
+}
+
 changeBgBrightness(100);
 
 document.getElementById("bright").addEventListener("input", (event) => {
   changeBgBrightness(event.target.value);
 });
 
-document.getElementById("change_color").addEventListener("click", (_) => {
-  currentColor = currentColor === COLORS.Red ? COLORS.WarmWhite : COLORS.Red;
-  changeBgBrightness(document.getElementById("bright").value);
-})
+document.getElementById("change_color").addEventListener("click", () => toggleBgColor());
